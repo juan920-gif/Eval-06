@@ -1,0 +1,39 @@
+//BD EVAL #4
+//JOSE ROQUEME V-32565486
+//MIGUEL CALDERON V-31101636
+
+*Inicio*
+include::../include/atributos.adoc[]
+image::banner[]
+
+
+
+== *Problema*
+
+Contexto: Una institución educativa maneja el registro de sus estudiantes y la asignación de cursos de forma manual mediante hojas de cálculo. 
+
+Problema: Esto genera duplicidad de datos, errores al inscribir a un estudiante en cursos que ya están llenos, y lentitud al momento de consultar el historial académico de un alumno. Se necesita un sistema centralizado respaldado por una base de datos relacional para automatizar y asegurar la integridad de estos procesos.
+
+== *Requerimientos Funcionales*
+
+* Gestión de Estudiantes: Permitir registrar, actualizar, consultar y eliminar (CRUD) datos de estudiantes.
+* Gestión de Cursos: Permitir crear nuevos cursos, asignarles un cupo máximo y un profesor.
+* Inscripciones: Permitir inscribir a un estudiante en uno o varios cursos, validando que el curso tenga cupos disponibles.
+* Reportes: Generar un listado de todos los estudiantes inscritos en un curso específico.
+
+== *Requerimientos No Funcionales*
+
+* Integridad de datos: No se puede borrar un curso si tiene estudiantes inscritos (restricción de llaves foráneas).
+* Rendimiento: Las consultas de historial académico deben resolverse en menos de 2 segundos.
+* Seguridad: Las contraseñas de los usuarios administrativos deben estar encriptadas, y la base de datos debe estar protegida contra inyecciones SQL.
+* Disponibilidad: El sistema de base de datos debe tener un uptime del 99.9%.
+
+== *Diseño del Diagrama Relacional*
+
+[cols="1,1,2", options="header"]
+|===
+| Tabla | Llave Primaria (PK) | Relaciones (FK)
+| Estudiantes | `id_estudiante` | Ninguna
+| Cursos | `id_curso` | Ninguna
+| Inscripciones | `id_inscripcion` | `id_estudiante` (FK), `id_curso` (FK)
+|===

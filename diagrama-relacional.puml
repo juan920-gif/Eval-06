@@ -1,0 +1,35 @@
+@startuml
+' Ocultar los iconos para formato entidad-relación
+hide circle
+skinparam linetype ortho
+
+entity "Estudiantes" as Estudiantes {
+  * id_estudiante : INT <<PK>>
+  --
+  nombre : VARCHAR(100)
+  apellido : VARCHAR(100)
+  email : VARCHAR(150)
+  fecha_registro : DATE
+}
+
+entity "Cursos" as Cursos {
+  * id_curso : INT <<PK>>
+  --
+  nombre_curso : VARCHAR(150)
+  creditos : INT
+  cupo_maximo : INT
+}
+
+entity "Inscripciones" as Inscripciones {
+  * id_inscripcion : INT <<PK>>
+  --
+  id_estudiante : INT <<FK>>
+  id_curso : INT <<FK>>
+  fecha_inscripcion : TIMESTAMP
+}
+
+' Relaciones de la base de datos
+Estudiantes ||--o{ Inscripciones
+Cursos ||--o{ Inscripciones
+
+@enduml
