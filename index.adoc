@@ -1,6 +1,7 @@
 //BD EVAL #4
 //JOSE ROQUEME V-32565486
 //MIGUEL CALDERON V-31101636
+//JUAN MALPICA V-32565486
 
 *Inicio*
 include::../include/atributos.adoc[]
